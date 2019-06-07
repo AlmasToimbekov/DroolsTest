@@ -1,0 +1,21 @@
+template header
+code
+name
+
+package com.myspace.buildingtest.shareddir;
+import com.myspace.buildingtest.*;
+
+dialect "mvel"
+
+template "Drt directory"
+
+    rule "Drt directory_@{row.rowNumber}"
+    when
+        Resource(amount == "20")
+    then
+//        System.out.println("@{name}");
+//        Resource resource = new Resource();
+//        resource.setAmount("@{name}");
+//        insert(resource);
+    end
+end template

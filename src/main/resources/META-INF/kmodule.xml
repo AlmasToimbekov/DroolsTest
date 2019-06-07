@@ -1,0 +1,30 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">-->
+
+<kmodule xmlns="http://www.drools.org/xsd/kmodule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <kbase name="directory1"
+           default="true"
+           eventProcessingMode="stream"
+           equalsBehavior="identity"
+           packages="com.myspace.buildingtest.directory1">
+        <ksession name="directory1" type="stateful" default="true" clockType="realtime"/>
+    </kbase>
+<!--    <kbase name="directory1"-->
+<!--           default="true"-->
+<!--           eventProcessingMode="stream"-->
+<!--           equalsBehavior="identity"-->
+<!--           packages="com.myspace.buildingtest.directory1, com.myspace.buildingtest.shareddir">-->
+<!--        <ruleTemplate dtable="com.myspace.buildingtest/directory1/drtDir1.xls" template="com.myspace.buildingtest/directory1/drtDir1.drt" row="2" col="1"/>-->
+<!--        <ruleTemplate dtable="com.myspace.buildingtest/shareddir/rootDrt.xls" template="com.myspace.buildingtest/shareddir/rootDrt.drt" row="2" col="1"/>-->
+<!--        <ksession name="directory1" type="stateful" default="true" clockType="realtime"/>-->
+<!--    </kbase>-->
+<!--    <kbase name="directory2"-->
+<!--           default="false"-->
+<!--           eventProcessingMode="stream"-->
+<!--           equalsBehavior="identity"-->
+<!--           packages="com.myspace.buildingtest.directory2, com.myspace.buildingtest.shareddir">-->
+<!--        <ruleTemplate dtable="com.myspace.buildingtest/directory2/drtDir2.xls" template="com.myspace.buildingtest/directory2/drtDir2.drt" row="2" col="1"/>-->
+<!--        <ruleTemplate dtable="com.myspace.buildingtest/shareddir/rootDrt.xls" template="com.myspace.buildingtest/shareddir/rootDrt.drt" row="2" col="1"/>-->
+<!--        <ksession name="directory2" type="stateful" default="true" clockType="realtime"/>-->
+<!--    </kbase>-->
+</kmodule>

@@ -1,0 +1,11 @@
+package com.myspace.buildingtest.shareddir;
+import com.myspace.buildingtest.*;
+
+rule "root directory rule"
+dialect "mvel"
+salience -10
+when accumulate(Resource($amount: Double.parseDouble(amount)), $minimum: min($amount))
+
+then
+    System.out.println("Root directory rule is fired" + $minimum);
+end

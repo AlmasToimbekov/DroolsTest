@@ -1,0 +1,46 @@
+package com.myspace.buildingtest.directory2;
+import com.myspace.buildingtest.*
+import java.util.UUID;
+
+rule "Rule 1"
+salience 30
+when
+
+then
+    Resource resource1 = new Resource();
+    resource1.setName("Resource 1");
+    resource1.setAmount("5");
+    insert(resource1);
+    System.out.println("First");
+end
+
+rule "Rule 2"
+salience 20
+//no-loop - next rule fires if use 'update()' instead
+when
+    $resource1: Resource(name == "Resource 1")
+then
+    modify($resource1) {setAmount("20")};
+//    update($resource1);
+    System.out.println("Second");
+end
+
+rule "Rule 3"
+salience 30
+when
+    $resource1: Resource(name == "Resource 1", Double.parseDouble(amount) == "20")
+//    - interesting that the line before fires this rule
+//    $resource1: Resource(name == "Resource 1", amount.startsWith("20"))
+then
+    System.out.println("Rule is fired"); //doesn't fire
+end
+
+rule "Rule 4"
+when
+    $resource1: Resource()
+then
+    System.out.println("Quantity of resources in WM");
+    System.out.println($resource1.getAmount());
+    System.out.println($resource1.getName());
+
+end

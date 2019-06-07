@@ -1,0 +1,53 @@
+package com.myspace.buildingtest.directory1;
+import com.myspace.buildingtest.*;
+
+function int newFunction(String name) {
+    if(name == null) {
+        return 0;
+    } else {
+     return 1;
+    }
+}
+rule "Rule 1"
+salience 30
+when
+    $null: Resource(name == null)
+then
+    Resource resource1 = new Resource();
+    resource1.setName("Resource 1");
+    resource1.setAmount("5");
+    insert(resource1);
+    System.out.println("First");
+end
+
+rule "Rule 2" extends "Rule 1"
+salience 20
+//no-loop - next rule fires if use 'update()' instead
+when
+    $resource1: Resource(name == "Resource 1")
+then
+    modify($resource1) {setAmount("20")};
+//    update($resource1);
+    System.out.println("Second");
+    System.out.println($null);
+end
+
+rule "Rule resources"
+salience 20
+//no-loop - next rule fires if use 'update()' instead
+when
+    $resource1: Resource()
+then
+    System.out.println("Resources amount");
+    System.out.println(newFunction($resource1.getName()));
+end
+
+rule "Rule 3"
+salience 30
+when
+    $resource1: Resource(name == "Resource 1", Double.parseDouble(amount) > 10.0)
+//    - interesting that the line below fires this rule
+//    $resource1: Resource(name == "Resource 1", amount.startsWith("20"))
+then
+    System.out.println("Rule is fired"); //doesn't fire
+end
